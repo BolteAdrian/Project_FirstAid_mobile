@@ -1,12 +1,14 @@
 package com.example.tema4;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -23,6 +25,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
+    Button buttonCall;
     String[] ProblemsNames = {"Artificial Respiration","CPR (Cardiac massage)","Shock","Heart Attack","Suffocation or Asphyxia","Cases of Swallowing Tongue","Bleeding","Stings and Bites","Burns","Broken bones"};
     int[] drawableIds = {R.drawable.fff, R.drawable.img_id_row2, R.drawable.img_id_row3, R.drawable.img_id_row4,R.drawable.img_id_row5,R.drawable.img_id_row6,R.drawable.img_id_row7,R.drawable.img_id_row8,R.drawable.img_id_row9,R.drawable.img_id_row10};
     ArrayAdapter<String> customAdapter;
@@ -33,8 +36,16 @@ public class MainActivity extends AppCompatActivity {
         //finding listview
 
         listView = findViewById(R.id.listview);
-       // customAdapter= new ArrayAdapter<String>(this, R.layout.activity_list_data, R.id.listdata,ProblemsNames);
-        //listView.setAdapter(customAdapter);
+        buttonCall =findViewById(R.id.button);
+//functie button
+        buttonCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:112"));
+                startActivity(intent);
+            }
+        });
 
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < 10; i++) {
