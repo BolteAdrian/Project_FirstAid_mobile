@@ -1,41 +1,62 @@
 package com.example.tema4;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
 
 public class ListData extends AppCompatActivity {
 
-    TextView listdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
-        listdata = findViewById(R.id.listdata);
+
+
 
         Intent intent = getIntent();
         String receivedName =  intent.getStringExtra("name");
 
 
-        if(receivedName.equals("Apple")){
-            listdata.setText("Apple price:1 euro/kg");
+        if(receivedName.equals("Artificial Respiration")){
+            startActivity(new Intent(ListData.this,ArtificialRespiration.class));
 
-    }else   if(receivedName.equals("Orange")){
-            listdata.setText("Orange price:1.5 euro/kg");}
-else  if(receivedName.equals("Banana")){
-                listdata.setText("Banana price:1.8 euro/kg");
 
-}else  if(receivedName.equals("Kiwi")){
-            listdata.setText("Kiwi price:2 euro/kg");
-
-        }else  if(receivedName.equals("Passion")){
-            listdata.setText("Passion price:2.5 euro/kg");
-
+    }else   if(receivedName.equals("CPR (Cardiac massage)")){
+            startActivity(new Intent(ListData.this,CPR.class));
         }
+else  if(receivedName.equals("Shock")){
+            startActivity(new Intent(ListData.this,Shock.class));
+}else  if(receivedName.equals("Heart Attack")){
+            startActivity(new Intent(ListData.this,HeartAttack.class));
+        }else  if(receivedName.equals("Suffocation or Asphyxia")){
+            startActivity(new Intent(ListData.this,Suffocation.class));
+        }
+        else  if(receivedName.equals("Cases of Swallowing Tongue")){
+            startActivity(new Intent(ListData.this,CasesofSwallowingTongue.class));
+        }
+        else  if(receivedName.equals("Bleeding")){
+            startActivity(new Intent(ListData.this,Bleeding.class));
+        }
+        else  if(receivedName.equals("Stings and Bites")){
+            startActivity(new Intent(ListData.this,StingsAndBites.class));
+        }
+        else  if(receivedName.equals("Burns")){
+            startActivity(new Intent(ListData.this,Burns.class));
+        }
+        else  if(receivedName.equals("Broken bones")){
+            startActivity(new Intent(ListData.this,BrokenBones.class));
+        }
+
+
         //enable back Button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -43,7 +64,7 @@ else  if(receivedName.equals("Banana")){
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            startActivity(new Intent(ListData.this,MainActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
