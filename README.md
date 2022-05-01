@@ -1,3 +1,4 @@
 # FirstAid App
-Proiect android : Aplicatie prim ajutor
+Project android(java)
+
 
